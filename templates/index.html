@@ -1,0 +1,47 @@
+{{define "content"}}
+<div class="main-container">
+    <!-- Левая панель -->
+    <aside class="sidebar">
+        <button class="toggle-btn" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#" title="Категории">
+                        <i class="fas fa-th-large"></i>
+                        <span>Категории</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" title="Подписки">
+                        <i class="fas fa-bell"></i>
+                        <span>Подписки</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Основной контент -->
+    <section class="content">
+        <h2>Стримы</h2>
+        <div class="streams">
+            <div class="stream">Стрим 1</div>
+            <div class="stream">Стрим 2</div>
+            <div class="stream">Стрим 3</div>
+        </div>
+    </section>
+</div>
+
+<script>
+function toggleSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.classList.toggle('collapsed');
+
+    const icon = document.querySelector('.toggle-btn i');
+    icon.classList.toggle('fa-bars');
+    icon.classList.toggle('fa-chevron-right');
+}
+</script>
+{{end}}

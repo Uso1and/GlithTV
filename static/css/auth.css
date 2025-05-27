@@ -1,0 +1,196 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Overlay styles */
+.auth-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(18, 18, 18, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.auth-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Form container */
+.auth-form-container {
+  position: relative;
+  background: linear-gradient(135deg, #1f1f1f, #2a2a2a);
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 400px;
+  margin: 0 20px;
+  transform: scale(0.8);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+/* Form animation when visible */
+.auth-overlay.show .auth-form-container {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Form header */
+.auth-form-container h1 {
+  margin-bottom: 25px;
+  font-size: 24px;
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Form inputs container */
+.auth-form-container .input-group {
+  margin-bottom: 20px;
+}
+
+/* Form inputs */
+.auth-form-container input[type="text"],
+.auth-form-container input[type="email"],
+.auth-form-container input[type="password"] {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background: #333;
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.auth-form-container input[type="text"]:focus,
+.auth-form-container input[type="email"]:focus,
+.auth-form-container input[type="password"]:focus {
+  background: #444;
+  border-color: #5555ff;
+}
+
+/* Submit button */
+.auth-form-container button[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #ff00cc, #3333ff);
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.auth-form-container button[type="submit"]:hover {
+  background: linear-gradient(135deg, #ff33cc, #5555ff);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Form links */
+.auth-form-container .form-footer {
+  margin-top: 30px; /* Увеличенный отступ сверху */
+  text-align: center;
+  color: #ccc;
+  font-size: 14px;
+}
+
+.auth-form-container .form-footer a {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  font-weight: 500;
+}
+
+.auth-form-container .form-footer a:hover {
+  color: #ff00cc;
+  text-decoration: underline;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.close-btn:hover {
+  color: #ff00cc;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Error message */
+.error-message {
+  color: #ff4d4d;
+  font-size: 14px;
+  margin-top: -10px;
+  margin-bottom: 15px;
+  display: none;
+}
+
+.error-message.show {
+  display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .auth-form-container {
+    padding: 30px 20px;
+    margin: 0 15px;
+    border-radius: 12px;
+  }
+  
+  .auth-form-container h1 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .auth-form-container input[type="text"],
+  .auth-form-container input[type="email"],
+  .auth-form-container input[type="password"] {
+    padding: 10px 12px;
+    font-size: 15px;
+  }
+  
+  .auth-form-container button[type="submit"] {
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .auth-form-container .form-footer {
+    margin-top: 25px; /* Увеличенный отступ для мобильной версии */
+  }
+}

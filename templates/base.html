@@ -1,0 +1,65 @@
+{{define "base"}}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GlitchTV</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="/static/css/auth.css" />
+</head>
+<body id="bodyContainer">
+    {{template "header" .}}
+    {{block "content" .}}{{end}}
+
+    <!-- Модальное окно для форм -->
+    <div id="authOverlay" class="auth-overlay">
+        <div class="auth-form-container" id="authFormContainer"></div>
+    </div>
+
+    <script>
+    function showAuth(type) {
+        fetch(`/${type}-form`)
+            .then(response => response.text())
+            .then(html => {
+                const container = document.getElementById('authFormContainer');
+                container.innerHTML = html;
+                document.getElementById('authOverlay').classList.add('show');
+                document.getElementById('bodyContainer').classList.add('blurred');
+            });
+    }
+
+    function closeAuth() {
+        document.getElementById('authOverlay').classList.remove('show');
+        document.getElementById('bodyContainer').classList.remove('blurred');
+    }
+
+    // Обработка выпадающего меню пользователя
+    function toggleUserDropdown() {
+        const dropdown = document.getElementById('userDropdown');
+        const profile = document.querySelector('.user-profile');
+        
+        if (dropdown.classList.contains('show')) {
+            dropdown.classList.remove('show');
+            profile.classList.remove('active');
+        } else {
+            dropdown.classList.add('show');
+            profile.classList.add('active');
+        }
+    }
+
+    // Закрытие меню при клике вне его
+    document.addEventListener('click', function(event) {
+        const dropdown = document.getElementById('userDropdown');
+        const profile = document.querySelector('.user-profile');
+        
+        if (dropdown && !profile.contains(event.target)) {
+            dropdown.classList.remove('show');
+            profile.classList.remove('active');
+        }
+    });
+    </script>
+</body>
+</html>
+{{end}}

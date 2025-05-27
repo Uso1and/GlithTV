@@ -1,0 +1,32 @@
+{{define "header"}}
+<header class="top-header">
+    <a href="/" class="logo">GlitchTV</a>
+    <div class="search">
+        <input type="text" placeholder="Поиск..." />
+    </div>
+    <div class="auth-buttons">
+        {{if .Authenticated}}
+            <div class="user-profile" onclick="toggleUserDropdown()">
+                <div class="user-avatar">{{firstChar .Username}}</div>
+                <span class="user-name">{{.Username}}</span>
+                <i class="fas fa-chevron-down dropdown-arrow"></i>
+                
+                <div class="user-dropdown" id="userDropdown">
+                    <a href="/profile" class="dropdown-item">
+                        <i class="fas fa-user"></i>
+                        Профиль
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="/logout" class="dropdown-item">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Выйти
+                    </a>
+                </div>
+            </div>
+        {{else}}
+            <button class="btn btn-register" onclick="showAuth('register')">Регистрация</button>
+            <button class="btn btn-login" onclick="showAuth('login')">Вход</button>
+        {{end}}
+    </div>
+</header>
+{{end}}

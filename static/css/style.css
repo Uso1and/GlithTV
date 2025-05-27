@@ -1,0 +1,437 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+}
+
+/* Верхняя панель */
+.top-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #1f1f1f;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 60px;
+    z-index: 10;
+}
+
+/* Логотип */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #ff00cc, #3333ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientShift 5s ease infinite;
+    background-size: 200% 200%;
+}
+
+/* Поиск */
+.search input {
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    width: 200px;
+    background: #333;
+    color: white;
+}
+
+/* --- Обновленные стили для кнопок авторизации --- */
+
+/* Общий контейнер для кнопок */
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Стиль для "Регистрации" как текста */
+.btn-register {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+    color: #aaa;
+    cursor: pointer;
+    font-weight: 400;
+    transition: color 0.2s;
+    position: relative;
+    top: 2px;
+    margin-right: 5px;
+}
+
+.btn-register:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Стиль для "Вход" */
+.btn-login {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: background 0.3s, transform 0.2s;
+    font-size: 13px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.btn-login:hover {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    transform: translateY(-1px);
+}
+
+/* --- Новые стили для меню пользователя --- */
+
+/* Контейнер профиля пользователя */
+.user-profile {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 20px;
+    transition: background-color 0.2s ease;
+}
+
+.user-profile:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Аватар пользователя */
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff00cc, #3333ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+/* Имя пользователя */
+.user-name {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    margin-right: 5px;
+}
+
+/* Стрелка вниз */
+.dropdown-arrow {
+    color: #aaa;
+    font-size: 12px;
+    transition: transform 0.2s ease;
+}
+
+.user-profile.active .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* Выпадающее меню */
+.user-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 8px;
+    min-width: 160px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    z-index: 1000;
+    margin-top: 8px;
+}
+
+.user-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Стрелка указатель меню */
+.user-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    right: 20px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #2a2a2a;
+}
+
+/* Элементы меню */
+.dropdown-item {
+    display: block;
+    padding: 12px 16px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-item i {
+    margin-right: 8px;
+    width: 16px;
+    text-align: center;
+}
+
+/* Разделитель */
+.dropdown-divider {
+    height: 1px;
+    background: #444;
+    margin: 4px 0;
+}
+
+/* Основной контейнер */
+.main-container {
+    display: flex;
+    margin-top: 60px;
+    height: calc(100vh - 60px);
+}
+
+/* Левая панель */
+.sidebar {
+    width: 200px;
+    background: linear-gradient(135deg, #2A2A2A, #1E1E1E, #141414);
+    padding: 20px 10px;
+    box-sizing: border-box;
+    height: 100%;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 3px 0 15px rgba(0, 0, 0, 0.3);
+    background-size: 300% 300%;
+    animation: gradientFlow 15s ease infinite;
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.sidebar::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: linear-gradient(to bottom, #ff00cc, #3333ff);
+    animation: gradientFlow 8s ease infinite;
+    background-size: 200% 200%;
+}
+
+.sidebar.collapsed {
+    width: 60px;
+    padding: 20px 5px;
+}
+
+/* Навигация в сайдбаре */
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 0 0;
+}
+
+.sidebar li {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.sidebar li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 4px;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar li a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255,0,204,0.1), rgba(51,51,255,0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar li a:hover::before {
+    opacity: 1;
+    animation: gradientFlow 5s ease infinite;
+    background-size: 200% 200%;
+}
+
+.sidebar li a i {
+    font-size: 1.2rem;
+    min-width: 24px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.sidebar li a span {
+    position: relative;
+    z-index: 1;
+}
+
+.sidebar.collapsed li a span {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    position: absolute;
+    left: 100%;
+    white-space: nowrap;
+}
+
+/* Кнопка сворачивания */
+.toggle-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.toggle-btn i {
+    transition: transform 0.3s ease;
+}
+
+.sidebar.collapsed .toggle-btn i {
+    transform: rotate(180deg);
+}
+
+/* Подсказки при наведении */
+.sidebar.collapsed li a:hover::after {
+    content: attr(title);
+    position: absolute;
+    left: calc(100% + 15px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: #333;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    animation: fadeIn 0.2s forwards;
+    z-index: 1000;
+    border: 1px solid #444;
+}
+
+.sidebar.collapsed li a:hover::before {
+    content: "";
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-right-color: #333;
+    margin-left: -6px;
+    opacity: 0;
+    animation: fadeIn 0.2s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Основной контент */
+.content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    transition: margin-left 0.3s ease;
+}
+
+.content h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+}
+
+/* Карточки стримов */
+.streams {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.stream {
+    width: 200px;
+    height: 150px;
+    background: #2A2A2A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #333;
+}
+
+.stream:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    background: #333;
+}

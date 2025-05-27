@@ -1,0 +1,9 @@
+<h1>Регистрация</h1>
+<button class="close-btn" onclick="closeAuth()">×</button>
+<form method="POST" action="/register">
+  <input type="text" name="username" placeholder="Имя пользователя" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <input type="password" name="password" placeholder="Пароль" required>
+  <button type="submit">Зарегистрироваться</button>
+</form>
+<p class="form-footer">Уже есть аккаунт? <a href="#" onclick="showAuth('login')">Войдите</a></p>
